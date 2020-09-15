@@ -10,12 +10,18 @@ function clickHandler(event){
 
     //ocultar todo menos el elemento con el id correcto
     for (let i = 0; i < tabcontent.length; i++){
-        tabcontent[i].style.display = 'none';
+        tabcontent[i].classList.add('js-content-hidden');
 
         if (tabcontent[i].getAttribute('id') == id) {
-            tabcontent[i].style.display= 'block';
+            tabcontent[i].classList.remove('js-content-hidden');
         }
     }
+
+    //se pone el color blanco por cada click que se da
+    for(let i =0; i < tablist.length;i++){
+        tablist[i].classList.remove('js-active');
+    }
+    event.currentTarget.classList.add('js-active'); 
 }
 
 
@@ -32,12 +38,13 @@ const tabcontent =  document.querySelectorAll('.tabs-content-item');
 //cuando queremos trabajar con todos los elementos de la lista usamos for
 
 for (let i = 0; i < tabcontent.length; i++){
-    tabcontent[i].style.display = 'none';
+    tabcontent[i].classList.add('js.content-hidden');
 }
-
 // empezamos por el primer div empezando desde el 0
 
-tabcontent[0].style.display = 'block';
+tabcontent[0].classList.remove('js.content-hidden');
+
+tablist[0].classList.add('js-active');
 
 
 for (let i = 0; i < tablist.length; i++){
