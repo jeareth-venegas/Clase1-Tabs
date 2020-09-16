@@ -1,28 +1,28 @@
-function clickHandler(event){
-    event.preventDefault();
+//function clickHandler(event){
+//    event.preventDefault();
     //console.log('Hola mundo');
-    //console.log(event.currentTarget);
+//    //console.log(event.currentTarget);
 
-    // el numero 1 dice que ignora el primer elemento(0) del string para hacer print en la consola sin el primer elemento (0)
-    const id = event.currentTarget.getAttribute('href').substring(1)
-    console.log(id);
+//    // el numero 1 dice que ignora el primer elemento(0) del string para hacer print en la consola sin el primer elemento (0)
+//    const id = event.currentTarget.getAttribute('href').substring(1)
+//    console.log(id);
 
 
-    //ocultar todo menos el elemento con el id correcto
-    for (let i = 0; i < tabcontent.length; i++){
-        tabcontent[i].classList.add('js-content-hidden');
+//    //ocultar todo menos el elemento con el id correcto
+//    for (let i = 0; i < tabcontent.length; i++){
+//        tabcontent[i].classList.add('js-content-hidden');
 
-        if (tabcontent[i].getAttribute('id') == id) {
-            tabcontent[i].classList.remove('js-content-hidden');
-        }
-    }
+//        if (tabcontent[i].getAttribute('id') == id) {
+//            tabcontent[i].classList.remove('js-content-hidden');
+//        }
+//    }
 
-    //se pone el color blanco por cada click que se da
-    for(let i =0; i < tablist.length;i++){
-        tablist[i].classList.remove('js-active');
-    }
-    event.currentTarget.classList.add('js-active'); 
-}
+//    //se pone el color blanco por cada click que se da
+//    for(let i =0; i < tablist.length;i++){
+//        tablist[i].classList.remove('js-active');
+//    }
+//    event.currentTarget.classList.add('js-active'); 
+//}
 
 
 
@@ -50,5 +50,30 @@ tablist[0].classList.add('js-active');
 for (let i = 0; i < tablist.length; i++){
     //.addEventListener nos da más opciones
     //click es el nombre del evento
-    tablist[i].addEventListener('click', clickHandler);
+
+    //tablist[i].addEventListener('click', clickHandler);
+
+
+    //Clase 2: haciendo la funcion mas pequeña
+    tablist[i].addEventListener('click', (event) =>{
+        event.preventDefault();
+    // el numero 1 dice que ignora el primer elemento(0) del string para hacer print en la consola sin el primer elemento (0)
+    const id = event.currentTarget.getAttribute('href').substring(1)
+    console.log(id);
+
+    //ocultar todo menos el elemento con el id correcto
+    for (let i = 0; i < tabcontent.length; i++){
+        tabcontent[i].classList.add('js-content-hidden');
+
+        if (tabcontent[i].getAttribute('id') == id) {
+            tabcontent[i].classList.remove('js-content-hidden');
+        }
+    }
+
+    //se pone el color blanco por cada click que se da
+    for(let i =0; i < tablist.length;i++){
+        tablist[i].classList.remove('js-active');
+    }
+    event.currentTarget.classList.add('js-active');
+    });
 }
